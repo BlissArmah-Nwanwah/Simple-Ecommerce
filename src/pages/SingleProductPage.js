@@ -22,13 +22,13 @@ const SingleProductPage = () => {
     single_product_loading: loading,
     single_product_error: error,
     single_product: product,
-    fetchSingleProduct,
+    fetchSingleProducts,
   } = useProductsContext();
 
 
 
   useEffect(()=>{
-fetchSingleProduct(`${url}${id}`)
+    fetchSingleProducts(`${url}${id}`)
   },[id])
 
   
@@ -46,7 +46,7 @@ return <Loading />
 if(error){
   return <Error />
   }
-  const {name,price,description,stock,stars,reviews,id:sku,company,image} = product
+  const {name,price,description,stock,stars,reviews,id:sku,company,images} = product
   return <Wrapper>
     <PageHero title={name} product />
     <div className="section section-center page">
@@ -54,7 +54,7 @@ if(error){
         back to products
       </Link>
       <div className="product-center">
-        <ProductImages />
+        <ProductImages images={images} />
         <section className="content">
           <h2>{name}</h2>
           <Stars />
