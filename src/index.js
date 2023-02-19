@@ -11,20 +11,18 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 // dev-42srpj5is53mcqe8.us.auth0.com
 
-// M7rQahYMwisZhjaJTfywdI1buQT4JCMT
+// lWjuPkVQgLHo6d13OUxaJDADhYxwyFuq
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
     <Auth0Provider
     domain="dev-42srpj5is53mcqe8.us.auth0.com"
-    clientId="M7rQahYMwisZhjaJTfywdI1buQT4JCMT"
-    authorizationParams={{
-      redirect_uri: window.location.origin
-    }}
-    cacheLocation= "localstorage"
+    clientId="lWjuPkVQgLHo6d13OUxaJDADhYxwyFuq"
+      redirectUri= {window.location.origin}
+          cacheLocation= "localstorage"
   >
-
+    <UserProvider>
     <ProductsProvider>
         <FilterProvider>
             <CartProvider>
@@ -32,5 +30,6 @@ root.render(
             </CartProvider>
         </FilterProvider>
     </ProductsProvider>
-  </Auth0Provider>
+      </UserProvider>  
+  </Auth0Provider>,
 );
